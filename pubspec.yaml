@@ -1,8 +1,7 @@
 name: flutter_app_update
-description: flutter 版本更新
+description: flutter App版本更新
 version: 0.0.1
-author: azhon
-homepage: https://github.com/azhon
+homepage: https://github.com/azhon/FlutterAppUpdate
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
