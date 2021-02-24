@@ -8,10 +8,8 @@
 
 ### 效果图
 
-<img src="https://github.com/azhon/AppUpdate/blob/master/img/zh/zh_1.png" width="300">　<img src="https://github.com/azhon/AppUpdate/blob/master/img/zh/zh_2.png" width="300">
-<img src="https://github.com/azhon/AppUpdate/blob/master/img/zh/zh_3.png" width="300">　<img src="https://github.com/azhon/AppUpdate/blob/master/img/zh/zh_4.png" width="300">
-<img src="https://github.com/azhon/AppUpdate/blob/master/img/zh/zh_5.png" width="300">　<img src="https://github.com/azhon/AppUpdate/blob/master/img/zh/zh_6.png" width="300">
-
+<img src="https://github.com/azhon/FlutterAppUpdate/blob/main/example/img/img1.png" width="300">　<img src="https://github.com/azhon/FlutterAppUpdate/blob/main/example/img/img2.png" width="300">
+<img src="https://github.com/azhon/FlutterAppUpdate/blob/main/example/img/img3.png" width="300">　<img src="https://github.com/azhon/FlutterAppUpdate/blob/main/example/img/img4.png" width="300">
 
 ### 使用步骤
 
