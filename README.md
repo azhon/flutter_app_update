@@ -1,4 +1,4 @@
-### 版本升级功能依赖于[AppUpdate](htts://github.com/azhon/AppUpdate)，所以升级相关的文档看这边[文档说明](https://github.com/azhon/AppUpdate/blob/master/README.md)
+### 版本升级功能依赖于[AppUpdate](https://github.com/azhon/AppUpdate)，所以升级相关的文档看这边[文档说明](https://github.com/azhon/AppUpdate/blob/master/README.md)
 ## 目录
 
 * [效果图](#效果图)
