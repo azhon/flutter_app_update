@@ -122,6 +122,12 @@ class _HomePageState extends State<HomePage> {
                 '1.支持Android M N O P Q\n2.支持自定义下载过程\n3.支持 设备>=Android M 动态权限的申请\n4.支持通知栏进度条展示\n5.支持文字国际化'),
             actions: <Widget>[
               FlatButton(
+                child: Text('取消'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              FlatButton(
                 child: Text('升级'),
                 onPressed: () {
                   UpdateModel model =

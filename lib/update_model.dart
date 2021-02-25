@@ -45,6 +45,9 @@ class UpdateModel {
   ///是否使用AppUpdate平台(默认为true)[http://azhong.tk:8088/app/#/]
   bool usePlatform = true;
 
+  ///ios AppStore下载链接
+  String appStoreUrl;
+
   UpdateModel(this.apkUrl, this.apkName, this.smallIcon);
 
   ///转json
@@ -64,6 +67,7 @@ class UpdateModel {
     data['showBgdToast'] = this.showBgdToast;
     data['forcedUpgrade'] = this.forcedUpgrade;
     data['usePlatform'] = this.usePlatform;
+    data['appStoreUrl'] = this.appStoreUrl ?? '';
     return data;
   }
 }
