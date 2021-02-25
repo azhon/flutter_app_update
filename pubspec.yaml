@@ -1,5 +1,5 @@
 name: flutter_app_update
-description: flutter App版本更新
+description: A simple lightweight and customizable version update library for Flutter
 version: 0.0.2
 homepage: https://github.com/azhon/FlutterAppUpdate
 

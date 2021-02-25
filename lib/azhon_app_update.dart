@@ -21,19 +21,17 @@ class AzhonAppUpdate {
   }
 
   ///更新
-  static Future<dynamic> update(UpdateModel model) async {
+  static Future<bool> update(UpdateModel model) async {
     return await _channel.invokeMethod('update', {
       'model': model.toJson(),
     });
   }
 
-  ///下载监听
-  static listener() {
+  ///监听
+  static listener(Function callback) {
     _listenerStream = _listenerChannel.receiveBroadcastStream().listen((data) {
       Map<String, dynamic> map = jsonDecode(data);
-      if (map['type'] == 'done') {
-        print(map['apk']);
-      }
+      callback(map);
     });
   }
 

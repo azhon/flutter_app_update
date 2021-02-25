@@ -46,7 +46,7 @@ class UpdateModel {
   bool usePlatform = true;
 
   ///ios AppStore下载链接
-  String appStoreUrl;
+  String appStoreId;
 
   UpdateModel(this.apkUrl, this.apkName, this.smallIcon);
 
@@ -67,7 +67,7 @@ class UpdateModel {
     data['showBgdToast'] = this.showBgdToast;
     data['forcedUpgrade'] = this.forcedUpgrade;
     data['usePlatform'] = this.usePlatform;
-    data['appStoreUrl'] = this.appStoreUrl ?? '';
+    data['appStoreId'] = this.appStoreId ?? '';
     return data;
   }
 }

@@ -30,7 +30,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    AzhonAppUpdate.listener();
+    AzhonAppUpdate.listener((map) {
+      print(map['type']);
+    });
   }
 
   @override
@@ -132,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   UpdateModel model =
                       UpdateModel(url, "flutterUpdate.apk", "ic_launcher");
-                  AzhonAppUpdate.update(model).then((value) => null);
+                  AzhonAppUpdate.update(model).then((value) => print(value));
                   Navigator.of(context).pop();
                 },
               ),
@@ -150,12 +152,12 @@ class _HomePageState extends State<HomePage> {
     model.apkSize = "20.4";
     model.apkDescription =
         "1.支持Android M N O P Q\n2.支持自定义下载过程\n3.支持 设备>=Android M 动态权限的申请\n4.支持通知栏进度条展示\n5.支持文字国际化";
-    AzhonAppUpdate.update(model).then((value) => null);
+    AzhonAppUpdate.update(model).then((value) => print(value));
   }
 
   ///简单使用
   _simpleUse() {
     UpdateModel model = UpdateModel(url, "flutterUpdate.apk", "ic_launcher");
-    AzhonAppUpdate.update(model).then((value) => null);
+    AzhonAppUpdate.update(model).then((value) => print(value));
   }
 }
