@@ -1,11 +1,10 @@
 ### 一、版本升级功能依赖于[AppUpdate](https://github.com/azhon/AppUpdate)，所以升级相关的文档看这边[文档说明](https://github.com/azhon/AppUpdate/blob/master/README.md) ｜ [English Doc](https://github.com/azhon/AppUpdate/blob/master/README-EN.md)
 
 ### 二、使用说明
-- 1、依赖此库
-
+- 1、依赖此库[前往此处查看版本号](https://pub.dev/packages/flutter_app_update/install)
 ```yaml
 dependencies:
-  flutter_app_update: #[前往此处查看版本号](https://pub.dev/packages/flutter_app_update/install)
+  flutter_app_update: ^version
 ```
 
 - 2、创建`UpdateModel`设置下载地址
