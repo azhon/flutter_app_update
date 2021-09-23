@@ -19,7 +19,7 @@ class UpdateModel {
   final String? apkVersionName;
 
   ///更新描述
-  final String? apkDescription;
+  final String apkDescription;
 
   ///安装包大小 单位 M
   final String? apkSize;
@@ -48,10 +48,10 @@ class UpdateModel {
   UpdateModel(
     this.apkUrl,
     this.apkName,
-    this.smallIcon, {
+    this.smallIcon,
+    this.apkDescription, {
     this.apkVersionCode,
     this.apkVersionName,
-    this.apkDescription,
     this.apkSize,
     this.apkMD5,
     this.showNewerToast = false,
@@ -70,7 +70,7 @@ class UpdateModel {
     data['smallIcon'] = this.smallIcon;
     data['apkVersionCode'] = this.apkVersionCode ?? '';
     data['apkVersionName'] = this.apkVersionName ?? '';
-    data['apkDescription'] = this.apkDescription ?? '';
+    data['apkDescription'] = this.apkDescription;
     data['apkSize'] = this.apkSize ?? '';
     data['apkMD5'] = this.apkMD5 ?? '';
     data['showNewerToast'] = this.showNewerToast;
