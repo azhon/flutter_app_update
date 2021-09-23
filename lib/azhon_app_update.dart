@@ -8,7 +8,7 @@ class AzhonAppUpdate {
   static const MethodChannel _channel = const MethodChannel('azhon_app_update');
   static const EventChannel _listenerChannel =
       const EventChannel('azhon_app_update_listener');
-  static StreamSubscription _listenerStream;
+  static StreamSubscription? _listenerStream;
 
   ///获取应用的versionCode
   static Future<int> get getVersionCode async {

@@ -13,49 +13,61 @@ class UpdateModel {
   ///------------当设置了VersionCode的值时会自动判断是否需要更新------------
 
   ///要更新apk的versionCode
-  int apkVersionCode;
+  final int? apkVersionCode;
 
   ///显示给用户的版本号
-  String apkVersionName;
+  final String? apkVersionName;
 
   ///更新描述
-  String apkDescription;
+  final String? apkDescription;
 
   ///安装包大小 单位 M
-  String apkSize;
+  final String? apkSize;
 
   ///新安装包md5文件校验（32位)，校验重复下载
-  String apkMD5;
+  final String? apkMD5;
 
   ///是否提示用户 "当前已是最新版本"(默认为false)
-  bool showNewerToast = false;
+  final bool showNewerToast;
 
   ///是否需要显示通知栏进度(默认为true)
-  bool showNotification = true;
+  final bool showNotification;
 
   ///下载完成是否自动弹出安装页面 (默认为true)
-  bool jumpInstallPage = true;
+  final bool jumpInstallPage;
 
   ///下载开始时是否提示 "正在后台下载新版本…" (默认为true)
-  bool showBgdToast = true;
+  final bool showBgdToast;
 
   ///是否强制升级(默认为false)
-  bool forcedUpgrade = false;
-
-  ///是否使用AppUpdate平台(默认为true)[http://azhong.tk:8088/app/#/]
-  bool usePlatform = true;
+  final bool forcedUpgrade;
 
   ///ios AppStore下载链接
-  String appStoreId;
+  final String? appStoreId;
 
-  UpdateModel(this.apkUrl, this.apkName, this.smallIcon);
+  UpdateModel(
+    this.apkUrl,
+    this.apkName,
+    this.smallIcon, {
+    this.apkVersionCode,
+    this.apkVersionName,
+    this.apkDescription,
+    this.apkSize,
+    this.apkMD5,
+    this.showNewerToast = false,
+    this.showNotification = true,
+    this.jumpInstallPage = true,
+    this.showBgdToast = true,
+    this.forcedUpgrade = false,
+    this.appStoreId,
+  });
 
   ///转json
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    data['apkUrl'] = this.apkUrl ?? '';
-    data['apkName'] = this.apkName ?? '';
-    data['smallIcon'] = this.smallIcon ?? '';
+    data['apkUrl'] = this.apkUrl;
+    data['apkName'] = this.apkName;
+    data['smallIcon'] = this.smallIcon;
     data['apkVersionCode'] = this.apkVersionCode ?? '';
     data['apkVersionName'] = this.apkVersionName ?? '';
     data['apkDescription'] = this.apkDescription ?? '';
@@ -66,7 +78,6 @@ class UpdateModel {
     data['jumpInstallPage'] = this.jumpInstallPage;
     data['showBgdToast'] = this.showBgdToast;
     data['forcedUpgrade'] = this.forcedUpgrade;
-    data['usePlatform'] = this.usePlatform;
     data['appStoreId'] = this.appStoreId ?? '';
     return data;
   }

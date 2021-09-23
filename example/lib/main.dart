@@ -143,21 +143,29 @@ class _HomePageState extends State<HomePage> {
 
   ///使用内置对话框
   _useBuiltInDialog() {
-    UpdateModel model = UpdateModel(url, "flutterUpdate.apk", "ic_launcher");
-    model.showNewerToast = true;
-    model.apkVersionCode = 2;
-    model.apkVersionName = "2.1.8";
-    model.apkSize = "20.4";
-    model.apkDescription =
-        "1.支持Android M N O P Q\n2.支持自定义下载过程\n3.支持 设备>=Android M 动态权限的申请\n4.支持通知栏进度条展示\n5.支持文字国际化";
-    model.appStoreId = '234234';
+    UpdateModel model = UpdateModel(
+      url,
+      "flutterUpdate.apk",
+      "ic_launcher",
+      showNewerToast: true,
+      apkVersionCode: 2,
+      apkVersionName: "2.1.8",
+      apkSize: "20.4",
+      appStoreId: '234234',
+      apkDescription:
+          "1.支持Android M N O P Q\n2.支持自定义下载过程\n3.支持 设备>=Android M 动态权限的申请\n4.支持通知栏进度条展示\n5.支持文字国际化",
+    );
     AzhonAppUpdate.update(model).then((value) => print(value));
   }
 
   ///简单使用
   _simpleUse() {
-    UpdateModel model = UpdateModel(url, "flutterUpdate.apk", "ic_launcher");
-    model.appStoreId = '234234';
+    UpdateModel model = UpdateModel(
+      url,
+      "flutterUpdate.apk",
+      "ic_launcher",
+      appStoreId: '234234',
+    );
     AzhonAppUpdate.update(model).then((value) => print(value));
   }
 }
