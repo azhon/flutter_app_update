@@ -25,7 +25,7 @@ import java.lang.Exception
  *版本更新插件
  */
 class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
-        EventChannel.StreamHandler {
+    EventChannel.StreamHandler {
 
     private lateinit var channel: MethodChannel
     private lateinit var applicationContext: Context
@@ -36,7 +36,8 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "azhon_app_update")
         channel.setMethodCallHandler(this)
-        val eventChannel = EventChannel(flutterPluginBinding.binaryMessenger, "azhon_app_update_listener")
+        val eventChannel =
+            EventChannel(flutterPluginBinding.binaryMessenger, "azhon_app_update_listener")
         eventChannel.setStreamHandler(this)
         applicationContext = flutterPluginBinding.applicationContext
     }
@@ -94,8 +95,10 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         manager?.release()
         manager = DownloadManager.getInstance(activity)
         //获取图标
-        val smallIcon = applicationContext.resources.getIdentifier(model!!["smallIcon"] as String,
-                "mipmap", applicationContext.packageName)
+        val smallIcon = applicationContext.resources.getIdentifier(
+            model!!["smallIcon"] as String,
+            "mipmap", applicationContext.packageName
+        )
         manager?.apkName = model["apkName"] as String
         manager?.apkUrl = model["apkUrl"] as String
         manager?.smallIcon = smallIcon
@@ -122,7 +125,6 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         config.isJumpInstallPage = model["jumpInstallPage"] as Boolean
         config.isShowBgdToast = model["showBgdToast"] as Boolean
         config.isForcedUpgrade = model["forcedUpgrade"] as Boolean
-        config.isUsePlatform = model["usePlatform"] as Boolean
         config.setOnDownloadListener(downloadListener)
         config.setButtonClickListener(buttonListener)
         manager?.configuration = config
