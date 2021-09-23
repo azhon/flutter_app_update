@@ -172,6 +172,7 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         }
 
         override fun done(apk: File?) {
+            manager = null
             val json = json("done")
             json.put("apk", apk?.path)
             events?.success(json.toString())
