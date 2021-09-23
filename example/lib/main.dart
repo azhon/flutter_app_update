@@ -48,63 +48,72 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             width: double.infinity,
-            child: RaisedButton(
+            child: TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.blue),
               onPressed: () {
                 _useOwnerDialog();
               },
-              child: Text('使用自己的对话框更新'),
+              child: Text('使用自己的对话框更新', style: TextStyle(color: Colors.white)),
             ),
           ),
           Container(
             width: double.infinity,
-            child: RaisedButton(
+            child: TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.blue),
               onPressed: () {
                 _simpleUse();
               },
-              child: Text('简单使用'),
+              child: Text('简单使用', style: TextStyle(color: Colors.white)),
             ),
           ),
           Container(
             width: double.infinity,
-            child: RaisedButton(
+            child: TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.blue),
               onPressed: () {
                 _useBuiltInDialog();
               },
-              child: Text('使用版本库内置的对话框更新'),
+              child:
+                  Text('使用版本库内置的对话框更新', style: TextStyle(color: Colors.white)),
             ),
           ),
           Container(
             width: double.infinity,
-            child: RaisedButton(
+            child: TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.blue),
               onPressed: () {
                 AzhonAppUpdate.cancel.then((value) {
                   print('取消下载结果 = $value');
                 });
               },
-              child: Text('取消下载'),
+              child: Text('取消下载', style: TextStyle(color: Colors.white)),
             ),
           ),
           Divider(height: 10),
           Container(
             width: double.infinity,
-            child: RaisedButton(
+            child: TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.blue),
               onPressed: () {
                 AzhonAppUpdate.getVersionCode.then((value) {
                   print('获取到的versionCode = $value');
                 });
               },
-              child: Text('获取VersionCode'),
+              child:
+                  Text('获取VersionCode', style: TextStyle(color: Colors.white)),
             ),
           ),
           Container(
             width: double.infinity,
-            child: RaisedButton(
+            child: TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.blue),
               onPressed: () {
                 AzhonAppUpdate.getVersionName.then((value) {
                   print('获取到的versionName = $value');
                 });
               },
-              child: Text('获取VersionName'),
+              child:
+                  Text('获取VersionName', style: TextStyle(color: Colors.white)),
             ),
           ),
         ],
