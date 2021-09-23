@@ -10,7 +10,18 @@ dependencies:
 - 2、创建`UpdateModel`设置下载地址
 
 ```dart
-UpdateModel model = UpdateModel("http://xxx.com/xx.apk", "flutterUpdate.apk", "ic_launcher");
+UpdateModel model = UpdateModel(
+  url,
+  "flutterUpdate.apk",
+  "ic_launcher",
+  showNewerToast: true,
+  apkVersionCode: 2,
+  apkVersionName: "2.1.8",
+  apkSize: "20.4",
+  appStoreId: '234234',
+  apkDescription:
+      "1.支持Android M N O P Q\n2.支持自定义下载过程\n3.支持 设备>=Android M 动态权限的申请\n4.支持通知栏进度条展示\n5.支持文字国际化"
+);
 AzhonAppUpdate.update(model).then((value) => print(value));
 ```
 
