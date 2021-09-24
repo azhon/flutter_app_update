@@ -52,7 +52,8 @@
 }
 #pragma 打开AppStore
 -(void)openAppStore:(NSString *)appId{
-    NSString *url=[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/%@?mt=8",appId];
+    NSString *name = [appId stringByAddingPercentEncodingWithAllowedCharacters:[[NSCharacterSet characterSetWithCharactersInString:@"?!@#$^&%*+,:;='\"`<>()[]{}/\\| "] invertedSet]];
+    NSString *url=[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/%@",name];
     NSLog(@"打开AppStore：%@",url);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
