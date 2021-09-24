@@ -20,26 +20,41 @@
     }else if([call.method isEqualToString:@"update"]){
         [self update:call.arguments];
     }else if([call.method isEqualToString:@"cancel"]){
-        NSLog(@"取消");
+        NSLog(@"取消下载");
     }
 }
 #pragma 版本更新
 -(void)update:(id)arguments{
     NSDictionary *model = arguments[@"model"];
     NSString *apkDescription= model[@"apkDescription"];
+    NSString *appStoreId= model[@"appStoreId"];
+    bool showiOSDialog = [[model objectForKey:@"showiOSDialog"] boolValue];
     bool forcedUpgrade = [[model objectForKey:@"forcedUpgrade"] boolValue];
+    //不显示对话框，直接打开appStore
+    if (!showiOSDialog) {
+        [self openAppStore: appStoreId];
+        return;
+    }
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"发现新版本" message:apkDescription
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *conform = [UIAlertAction actionWithTitle:@"升级" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"点击了确认按钮");
+        [self openAppStore: appStoreId];
     }];
+    //强制更新
     if (!forcedUpgrade) {
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"点击取消");
         }];
         [alert addAction:cancel];
     }
     [alert addAction:conform];
     [[self findViewController:nil] presentViewController:alert animated:YES completion:nil];
+}
+#pragma 打开AppStore
+-(void)openAppStore:(NSString *)appId{
+    NSString *url=[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/%@?mt=8",appId];
+    NSLog(@"打开AppStore：%@",url);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 #pragma 获取UIViewController 然后可以跳转

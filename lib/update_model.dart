@@ -45,6 +45,9 @@ class UpdateModel {
   ///ios AppStore下载链接
   final String? appStoreId;
 
+  ///ios 是否显示对话框
+  final bool showiOSDialog;
+
   UpdateModel(
     this.apkUrl,
     this.apkName,
@@ -59,6 +62,7 @@ class UpdateModel {
     this.jumpInstallPage = true,
     this.showBgdToast = true,
     this.forcedUpgrade = false,
+    this.showiOSDialog = true,
     this.appStoreId,
   });
 
@@ -78,6 +82,7 @@ class UpdateModel {
     data['jumpInstallPage'] = this.jumpInstallPage;
     data['showBgdToast'] = this.showBgdToast;
     data['forcedUpgrade'] = this.forcedUpgrade;
+    data['showiOSDialog'] = this.showiOSDialog;
     data['appStoreId'] = this.appStoreId ?? '';
     return data;
   }

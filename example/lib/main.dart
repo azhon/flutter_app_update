@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
             child: TextButton(
               style: TextButton.styleFrom(backgroundColor: Colors.blue),
               onPressed: () {
-                _simpleUse();
+                _simpleUse(true);
               },
               child: Text('简单使用', style: TextStyle(color: Colors.white)),
             ),
@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
               FlatButton(
                 child: Text('升级'),
                 onPressed: () {
-                  _simpleUse();
+                  _simpleUse(false);
                   Navigator.of(context).pop();
                 },
               ),
@@ -162,18 +162,20 @@ class _HomePageState extends State<HomePage> {
       apkVersionName: "2.1.8",
       apkSize: "20.4",
       appStoreId: '234234',
+      showiOSDialog: true,
     );
     AzhonAppUpdate.update(model).then((value) => print(value));
   }
 
   ///简单使用
-  _simpleUse() {
+  _simpleUse(bool showiOSDialog) {
     UpdateModel model = UpdateModel(
       url,
       "flutterUpdate.apk",
       "ic_launcher",
       "1.支持Android M N O P Q\n2.支持自定义下载过程\n3.支持 设备>=Android M 动态权限的申请\n4.支持通知栏进度条展示\n5.支持文字国际化",
       appStoreId: '234234',
+      showiOSDialog: showiOSDialog,
     );
     AzhonAppUpdate.update(model).then((value) => print(value));
   }
