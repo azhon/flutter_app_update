@@ -1,6 +1,6 @@
 name: flutter_app_update
 description: A simple lightweight and customizable version update library for Flutter；一个简单、轻量、可随意定制的Android版本更新库
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/azhon/FlutterAppUpdate
 
 environment:
