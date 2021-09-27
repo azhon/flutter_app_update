@@ -1,4 +1,5 @@
 #import "FlutterAppUpdatePlugin.h"
+#import "UIAlertController+Dismiss.h"
 
 @implementation FlutterAppUpdatePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -27,18 +28,21 @@
 -(void)update:(id)arguments{
     NSDictionary *model = arguments[@"model"];
     NSString *apkDescription= model[@"apkDescription"];
-    NSString *appStoreId= model[@"appStoreId"];
+    NSString *iOSUrl= model[@"iOSUrl"];
     bool showiOSDialog = [[model objectForKey:@"showiOSDialog"] boolValue];
     bool forcedUpgrade = [[model objectForKey:@"forcedUpgrade"] boolValue];
     //不显示对话框，直接打开appStore
     if (!showiOSDialog) {
-        [self openAppStore: appStoreId];
+        [self openAppStore: iOSUrl];
         return;
     }
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"发现新版本" message:apkDescription
                                                             preferredStyle:UIAlertControllerStyleAlert];
+    if (forcedUpgrade) {
+        alert.notDismiss=YES;
+    }
     UIAlertAction *conform = [UIAlertAction actionWithTitle:@"升级" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self openAppStore: appStoreId];
+        [self openAppStore: iOSUrl];
     }];
     //强制更新
     if (!forcedUpgrade) {
@@ -51,10 +55,9 @@
     [[self findViewController:nil] presentViewController:alert animated:YES completion:nil];
 }
 #pragma 打开AppStore
--(void)openAppStore:(NSString *)appId{
-    NSString *name = [appId stringByAddingPercentEncodingWithAllowedCharacters:[[NSCharacterSet characterSetWithCharactersInString:@"?!@#$^&%*+,:;='\"`<>()[]{}/\\| "] invertedSet]];
-    NSString *url=[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/%@",name];
-    NSLog(@"打开AppStore：%@",url);
+-(void)openAppStore:(NSString *)iOSUrl{
+    NSString *url = [iOSUrl stringByAddingPercentEncodingWithAllowedCharacters:[[NSCharacterSet characterSetWithCharactersInString:@""] invertedSet]];
+    NSLog(@"打开iOS下载地址：%@",url);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 

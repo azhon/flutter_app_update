@@ -42,8 +42,8 @@ class UpdateModel {
   ///是否强制升级(默认为false)
   final bool forcedUpgrade;
 
-  ///ios AppStore下载链接
-  final String? appStoreId;
+  ///ios 下载链接
+  final String? iOSUrl;
 
   ///ios 是否显示对话框
   final bool showiOSDialog;
@@ -63,7 +63,7 @@ class UpdateModel {
     this.showBgdToast = true,
     this.forcedUpgrade = false,
     this.showiOSDialog = true,
-    this.appStoreId,
+    this.iOSUrl,
   });
 
   ///转json
@@ -83,7 +83,7 @@ class UpdateModel {
     data['showBgdToast'] = this.showBgdToast;
     data['forcedUpgrade'] = this.forcedUpgrade;
     data['showiOSDialog'] = this.showiOSDialog;
-    data['appStoreId'] = this.appStoreId ?? '';
+    data['iOSUrl'] = this.iOSUrl ?? '';
     return data;
   }
 }
