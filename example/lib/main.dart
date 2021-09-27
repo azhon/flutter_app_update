@@ -46,77 +46,46 @@ class _HomePageState extends State<HomePage> {
             '使用说明：三个方式不能并行 请等待一个方式下载完成在使用其他方式',
             style: TextStyle(color: Color(0xFFD81B60), fontSize: 14),
           ),
-          Container(
-            width: double.infinity,
-            child: TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blue),
-              onPressed: () {
-                _useOwnerDialog();
-              },
-              child: Text('使用自己的对话框更新', style: TextStyle(color: Colors.white)),
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            child: TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blue),
-              onPressed: () {
-                _simpleUse(true);
-              },
-              child: Text('简单使用', style: TextStyle(color: Colors.white)),
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            child: TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blue),
-              onPressed: () {
-                _useBuiltInDialog();
-              },
-              child:
-                  Text('使用版本库内置的对话框更新', style: TextStyle(color: Colors.white)),
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            child: TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blue),
-              onPressed: () {
-                AzhonAppUpdate.cancel.then((value) {
-                  print('取消下载结果 = $value');
-                });
-              },
-              child: Text('取消下载', style: TextStyle(color: Colors.white)),
-            ),
-          ),
+          _item('使用自己的对话框更新', () {
+            _useOwnerDialog();
+          }),
+          _item('使用版本库内置的对话框更新', () {
+            _useBuiltInDialog(false);
+          }),
+          _item('简单使用', () {
+            _simpleUse(true);
+          }),
+          _item('强制更新', () {
+            _useBuiltInDialog(true);
+          }),
+          _item('取消下载', () {
+            AzhonAppUpdate.cancel.then((value) {
+              print('取消下载结果 = $value');
+            });
+          }),
           Divider(height: 10),
-          Container(
-            width: double.infinity,
-            child: TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blue),
-              onPressed: () {
-                AzhonAppUpdate.getVersionCode.then((value) {
-                  print('获取到的versionCode = $value');
-                });
-              },
-              child:
-                  Text('获取VersionCode', style: TextStyle(color: Colors.white)),
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            child: TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blue),
-              onPressed: () {
-                AzhonAppUpdate.getVersionName.then((value) {
-                  print('获取到的versionName = $value');
-                });
-              },
-              child:
-                  Text('获取VersionName', style: TextStyle(color: Colors.white)),
-            ),
-          ),
+          _item('获取VersionCode', () {
+            AzhonAppUpdate.getVersionCode.then((value) {
+              print('获取到的versionCode = $value');
+            });
+          }),
+          _item('获取VersionName', () {
+            AzhonAppUpdate.getVersionName.then((value) {
+              print('获取到的versionName = $value');
+            });
+          }),
         ],
+      ),
+    );
+  }
+
+  Widget _item(String text, VoidCallback onPressed) {
+    return Container(
+      width: double.infinity,
+      child: TextButton(
+        style: TextButton.styleFrom(backgroundColor: Colors.blue),
+        child: Text(text, style: TextStyle(color: Colors.white)),
+        onPressed: () => onPressed.call(),
       ),
     );
   }
@@ -151,7 +120,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   ///使用内置对话框
-  _useBuiltInDialog() {
+  _useBuiltInDialog(bool forcedUpgrade) {
     UpdateModel model = UpdateModel(
       url,
       "flutterUpdate.apk",
@@ -163,6 +132,7 @@ class _HomePageState extends State<HomePage> {
       apkSize: "20.4",
       appStoreId: '抖音/id1142110895',
       showiOSDialog: true,
+      forcedUpgrade: forcedUpgrade,
     );
     AzhonAppUpdate.update(model).then((value) => print(value));
   }
