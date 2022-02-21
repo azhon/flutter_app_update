@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('一个简单好用的版本更新库')),
+        appBar: AppBar(title: Text('一个简单好用的版本更新库')),
         body: HomePage(),
       ),
     );
@@ -101,13 +101,11 @@ class _HomePageState extends State<HomePage> {
             content: Text(
                 '1.支持Android M N O P Q\n2.支持自定义下载过程\n3.支持 设备>=Android M 动态权限的申请\n4.支持通知栏进度条展示\n5.支持文字国际化'),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text('取消'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+                onPressed: () => Navigator.of(context).pop(),
               ),
-              FlatButton(
+              TextButton(
                 child: Text('升级'),
                 onPressed: () {
                   _simpleUse(false);
