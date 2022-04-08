@@ -4,11 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.text.TextUtils
 import androidx.annotation.NonNull
-import com.azhon.appupdate.config.UpdateConfiguration
 import com.azhon.appupdate.listener.OnButtonClickListener
 import com.azhon.appupdate.listener.OnDownloadListener
 import com.azhon.appupdate.manager.DownloadManager
-import com.azhon.appupdate.utils.ApkUtil
+import com.azhon.appupdate.util.ApkUtil
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -82,8 +81,9 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     }
 
     private fun getVersionName(result: Result) {
-        val versionName = ApkUtil.getVersionName(applicationContext)
-        result.success(versionName)
+        val packageInfo =
+            applicationContext.packageManager.getPackageInfo(applicationContext.packageName, 0)
+        result.success(packageInfo.versionName)
     }
 
     /**
@@ -93,43 +93,39 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         val model = call.argument<HashMap<String, Any>>("model")
         //释放之前的
         manager?.release()
-        manager = DownloadManager.getInstance(activity)
         //获取图标
         val smallIcon = applicationContext.resources.getIdentifier(
-            model!!["smallIcon"] as String,
-            "mipmap", applicationContext.packageName
+            model!!["smallIcon"] as String, "mipmap", applicationContext.packageName
         )
-        manager?.apkName = model["apkName"] as String
-        manager?.apkUrl = model["apkUrl"] as String
-        manager?.smallIcon = smallIcon
-
-        if (notNull(model, "apkVersionCode")) {
-            manager?.apkVersionCode = model["apkVersionCode"] as Int
+        manager = DownloadManager.Builder(activity).run {
+            apkName(model["apkName"] as String)
+            apkUrl(model["apkUrl"] as String)
+            smallIcon(smallIcon)
+            showNewerToast(model["showNewerToast"] as Boolean)
+            showNotification(model["showNotification"] as Boolean)
+            jumpInstallPage(model["jumpInstallPage"] as Boolean)
+            showBgdToast(model["showBgdToast"] as Boolean)
+            forcedUpgrade(model["forcedUpgrade"] as Boolean)
+            onDownloadListener(downloadListener)
+            onButtonClickListener(buttonListener)
+            if (notNull(model, "apkVersionCode")) {
+                apkVersionCode(model["apkVersionCode"] as Int)
+            }
+            if (notNull(model, "apkVersionName")) {
+                apkVersionName(model["apkVersionName"] as String)
+            }
+            if (notNull(model, "apkDescription")) {
+                apkDescription(model["apkDescription"] as String)
+            }
+            if (notNull(model, "apkSize")) {
+                apkSize(model["apkSize"] as String)
+            }
+            if (notNull(model, "apkMD5")) {
+                apkMD5(model["apkMD5"] as String)
+            }
+            build()
         }
-        if (notNull(model, "apkVersionName")) {
-            manager?.apkVersionName = model["apkVersionName"] as String
-        }
-        if (notNull(model, "apkDescription")) {
-            manager?.apkDescription = model["apkDescription"] as String
-        }
-        if (notNull(model, "apkSize")) {
-            manager?.apkSize = model["apkSize"] as String
-        }
-        if (notNull(model, "apkMD5")) {
-            manager?.apkMD5 = model["apkMD5"] as String
-        }
-        manager?.isShowNewerToast = model["showNewerToast"] as Boolean
-
-        val config = UpdateConfiguration()
-        config.isShowNotification = model["showNotification"] as Boolean
-        config.isJumpInstallPage = model["jumpInstallPage"] as Boolean
-        config.isShowBgdToast = model["showBgdToast"] as Boolean
-        config.isForcedUpgrade = model["forcedUpgrade"] as Boolean
-        config.setOnDownloadListener(downloadListener)
-        config.setButtonClickListener(buttonListener)
-        manager?.configuration = config
         manager?.download()
-
         result.success(true)
     }
 
@@ -160,7 +156,7 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     override fun onDetachedFromActivityForConfigChanges() {
     }
 
-    private var downloadListener: OnDownloadListener = object : OnDownloadListener {
+    private val downloadListener: OnDownloadListener = object : OnDownloadListener {
         override fun start() {
             events?.success(json("start").toString())
         }
@@ -172,10 +168,10 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
             events?.success(json.toString())
         }
 
-        override fun done(apk: File?) {
+        override fun done(apk: File) {
             manager = null
             val json = json("done")
-            json.put("apk", apk?.path)
+            json.put("apk", apk.path)
             events?.success(json.toString())
         }
 
@@ -183,16 +179,19 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
             events?.success(json("cancel").toString())
         }
 
-        override fun error(e: Exception?) {
+        override fun error(e: Exception) {
             val json = json("error")
-            json.put("exception", e?.message)
+            json.put("exception", e.message)
             events?.success(json.toString())
         }
     }
-    private var buttonListener: OnButtonClickListener = OnButtonClickListener { id ->
-        val json = json("onButtonClick")
-        json.put("id", id)
-        events?.success(json.toString())
+    private val buttonListener: OnButtonClickListener = object : OnButtonClickListener {
+
+        override fun onButtonClick(id: Int) {
+            val json = json("onButtonClick")
+            json.put("id", id)
+            events?.success(json.toString())
+        }
     }
 
     private fun json(type: String): JSONObject {
