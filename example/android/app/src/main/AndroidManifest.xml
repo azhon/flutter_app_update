@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.azhon.flutter_app_update_example">
    <application
-        android:label="flutter_app_update_example"
+        android:label="Flutter版本更新"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

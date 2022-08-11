@@ -1,5 +1,6 @@
 name: flutter_app_update_example
 description: Demonstrates how to use the flutter_app_update plugin.
+version: 2.0.0+200
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.

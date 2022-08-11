@@ -68,7 +68,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "2.0.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -116,13 +116,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.1"
-  plugin_platform_interface:
-    dependency: transitive
-    description:
-      name: plugin_platform_interface
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.1.2"
   sky_engine:
     dependency: transitive
     description: flutter
