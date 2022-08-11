@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_app_update/update_model.dart';
 
 class AzhonAppUpdate {
-  static const MethodChannel _channel = const MethodChannel('azhon_app_update');
+  static const MethodChannel _channel = MethodChannel('azhon_app_update');
   static const EventChannel _listenerChannel =
-      const EventChannel('azhon_app_update_listener');
+      EventChannel('azhon_app_update_listener');
   static StreamSubscription? _listenerStream;
 
   ///获取应用的versionCode
@@ -29,6 +30,7 @@ class AzhonAppUpdate {
 
   ///监听
   static listener(Function callback) {
+    if (!Platform.isAndroid) return;
     _listenerStream = _listenerChannel.receiveBroadcastStream().listen((data) {
       Map<String, dynamic> map = jsonDecode(data);
       callback(map);

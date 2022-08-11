@@ -14,13 +14,12 @@ UpdateModel model = UpdateModel(
   url,
   "flutterUpdate.apk",
   "ic_launcher",
+  "1.支持Android4.1及以上版本\n2.支持自定义下载过程\n3.支持通知栏进度条展示\n4.支持文字国际化\n5.使用Kotlin协程重构",
   showNewerToast: true,
   apkVersionCode: 2,
-  apkVersionName: "2.1.8",
-  apkSize: "20.4",
-  appStoreId: 'https://itunes.apple.com/cn/app/抖音/id1142110895',
-  apkDescription:
-      "1.支持Android M N O P Q\n2.支持自定义下载过程\n3.支持 设备>=Android M 动态权限的申请\n4.支持通知栏进度条展示\n5.支持文字国际化"
+  apkVersionName: "V2.1.8",
+  apkSize: "20.4MB",
+  iOSUrl: 'https://itunes.apple.com/cn/app/抖音/id1142110895',
 );
 AzhonAppUpdate.update(model).then((value) => print(value));
 ```
@@ -52,7 +51,7 @@ void initState() {
     - `error` 下载出错通知
         - 扩展数据 `exception`String类型 下载出错信息
 
-### 三、由于`iOS`需要前往`AppStore`下载更新，所以`iOS`平台在`UpdateModel`中需要传递`iOSUrl`参数，然后跳转至`AppStore`下载
+### 三、由于iOS需要前往AppStore下载更新，所以iOS平台在UpdateModel中需要传递iOSUrl参数，然后跳转至AppStore下载
 ### 四、效果图
 
 <img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/img1.png" width="300">　<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/img2.png" width="300">
