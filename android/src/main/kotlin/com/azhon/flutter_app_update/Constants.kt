@@ -6,7 +6,7 @@ package com.azhon.flutter_app_update
  * 包名       com.azhon.flutter_app_update
  * 文件名:    Constants
  * 创建时间:  2/23/21 on 4:50 PM
- * 描述:     TODO
+ * 描述:
  *
  * @author   阿钟
  */

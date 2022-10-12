@@ -18,7 +18,6 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONObject
 import java.io.File
-import java.lang.Exception
 
 /**
  *版本更新插件

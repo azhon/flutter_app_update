@@ -68,22 +68,22 @@ class UpdateModel {
 
   ///转json
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['apkUrl'] = this.apkUrl;
-    data['apkName'] = this.apkName;
-    data['smallIcon'] = this.smallIcon;
-    data['apkVersionCode'] = this.apkVersionCode ?? '';
-    data['apkVersionName'] = this.apkVersionName ?? '';
-    data['apkDescription'] = this.apkDescription;
-    data['apkSize'] = this.apkSize ?? '';
-    data['apkMD5'] = this.apkMD5 ?? '';
-    data['showNewerToast'] = this.showNewerToast;
-    data['showNotification'] = this.showNotification;
-    data['jumpInstallPage'] = this.jumpInstallPage;
-    data['showBgdToast'] = this.showBgdToast;
-    data['forcedUpgrade'] = this.forcedUpgrade;
-    data['showiOSDialog'] = this.showiOSDialog;
-    data['iOSUrl'] = this.iOSUrl ?? '';
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['apkUrl'] = apkUrl;
+    data['apkName'] = apkName;
+    data['smallIcon'] = smallIcon;
+    data['apkVersionCode'] = apkVersionCode ?? '';
+    data['apkVersionName'] = apkVersionName ?? '';
+    data['apkDescription'] = apkDescription;
+    data['apkSize'] = apkSize ?? '';
+    data['apkMD5'] = apkMD5 ?? '';
+    data['showNewerToast'] = showNewerToast;
+    data['showNotification'] = showNotification;
+    data['jumpInstallPage'] = jumpInstallPage;
+    data['showBgdToast'] = showBgdToast;
+    data['forcedUpgrade'] = forcedUpgrade;
+    data['showiOSDialog'] = showiOSDialog;
+    data['iOSUrl'] = iOSUrl ?? '';
     return data;
   }
 }
