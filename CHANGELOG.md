@@ -1,21 +1,24 @@
+## 2.0.1
+[Fix issues 5](https://github.com/azhon/flutter_app_update/issues/5)
+
 ## 2.0.0
-1、更新AppUpdate至4.2.2
+update AppUpdate library to 4.2.2
 
 ## 1.0.5
-1、更新AppUpdate至4.0.0
+update AppUpdate library to 4.0.0
 
 ## 1.0.2
-1、优化iOS升级对话框
-2、优化iOS下载地址
+opt iOS upgrade dialog
+opt iOS download url
 
 ## 1.0.1
-1、升级至Null-Safety
+update Flutter to Null-Safety
 
 ## 1.0.0
-1、升级只Null-Safety
+update Flutter to Null-Safety
 
 ## 0.0.2
-1、Flutter平台App版本更新、更新效果图
+update renderings
 
 ## 0.0.1
-1、Flutter平台App版本更新
+publish package
