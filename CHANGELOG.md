@@ -1,3 +1,6 @@
+## 2.0.2
+update AppUpdate library to 4.2.5
+
 ## 2.0.1
 [Fix issues 5](https://github.com/azhon/flutter_app_update/issues/5)
 
