@@ -1,3 +1,7 @@
+## 2.1.0
+update AppUpdate library to 4.2.7
+opt flutter mini sdk version
+
 ## 2.0.2
 update AppUpdate library to 4.2.5
 

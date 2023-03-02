@@ -4,8 +4,8 @@ version: 2.0.2
 homepage: https://github.com/azhon/flutter_app_update
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
-  flutter: ">=2.5.0"
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
 
 dependencies:
   flutter:

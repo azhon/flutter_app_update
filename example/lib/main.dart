@@ -24,7 +24,7 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     AzhonAppUpdate.listener((map) {
-      print(map['type']);
+      debugPrint(map['type']);
     });
   }
 
@@ -60,18 +60,18 @@ class _HomePageState extends State<HomePage> {
           }),
           _item('取消下载', () {
             AzhonAppUpdate.cancel.then((value) {
-              print('取消下载结果 = $value');
+              debugPrint('取消下载结果 = $value');
             });
           }),
           const Divider(height: 10),
           _item('获取VersionCode', () {
             AzhonAppUpdate.getVersionCode.then((value) {
-              print('获取到的versionCode = $value');
+              debugPrint('获取到的versionCode = $value');
             });
           }),
           _item('获取VersionName', () {
             AzhonAppUpdate.getVersionName.then((value) {
-              print('获取到的versionName = $value');
+              debugPrint('获取到的versionName = $value');
             });
           }),
         ],
@@ -132,7 +132,7 @@ class _HomePageState extends State<HomePage> {
       showiOSDialog: true,
       forcedUpgrade: forcedUpgrade,
     );
-    AzhonAppUpdate.update(model).then((value) => print(value));
+    AzhonAppUpdate.update(model).then((value) => debugPrint('$value'));
   }
 
   ///简单使用
@@ -145,6 +145,6 @@ class _HomePageState extends State<HomePage> {
       iOSUrl: 'https://itunes.apple.com/cn/app/抖音/id1142110895',
       showiOSDialog: showiOSDialog,
     );
-    AzhonAppUpdate.update(model).then((value) => print(value));
+    AzhonAppUpdate.update(model).then((value) => debugPrint('$value'));
   }
 }
