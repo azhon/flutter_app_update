@@ -24,7 +24,7 @@ UpdateModel model = UpdateModel(
 AzhonAppUpdate.update(model).then((value) => print(value));
 ```
 
-- 3、"ic_launcher"指的是在`Android`项目中在`res/mipmap`文件夹下的图片
+- 3、`ic_launcher`指的是在`Android`项目中在`res/mipmap`文件夹下的图片
 
 - 4、监听下载过程
 
@@ -37,19 +37,55 @@ void initState() {
   });
 }
 ```
-- 5、回调事件如下：
-    - `onButtonClick` 对话框点击事件通知
-        - 扩展数据 `id`Int类型：0：升级按钮点击，1：取消按钮点击
-    - `start` 开始下载通知
-        - 无扩展数据
-    - `downloading` 下载中
-        - 扩展数据 `max`、`progress`Int类型，max:总大小、progress:当前下载进度
-    - `done` 下载完成通知
-        - 扩展数据 `apk`String类型 安装包存储路径
-    - `cancel` 取消下载通知 
-        - 无扩展数据
-    - `error` 下载出错通知
-        - 扩展数据 `exception`String类型 下载出错信息
+<table>
+	<tr>
+	    <td>监听类型(type)</td>
+	    <td>扩展字段数据</td>
+	    <td>数据类型</td>
+	    <td>备注</td>
+	</tr >
+	<tr>
+	    <td>onButtonClick</td>
+	    <td>id</td>
+	    <td>int</td>
+	    <td>对话框按钮点击通知(0:确定，1:取消)</td>
+	</tr>
+	<tr>
+	    <td>start</td>
+	    <td>/</td>
+	    <td>/</td>
+	    <td>开始下载通知</td>
+	</tr>
+	<tr>
+	    <td rowspan="2">downloading</td>
+	    <td>max</td>
+	    <td>int</td>
+	    <td>下载中通知，下载总大小</td>
+	</tr>
+	<tr>
+	    <td>progress</td>
+	    <td>int</td>
+	    <td>当前下载进度</td>
+	</tr>
+	<tr>
+	    <td>done</td>
+	    <td>apk</td>
+	    <td>String</td>
+	    <td>下载完成通知，安装包路径</td>
+	</tr>
+	<tr>
+	    <td>cancel</td>
+	    <td>/</td>
+	    <td>/</td>
+	    <td>取消下载通知</td>
+	</tr>
+	<tr>
+	    <td>error</td>
+	    <td>exception</td>
+	    <td>String</td>
+	    <td>下载出错通知，错误信息</td>
+	</tr>
+</table>
 
 ### 三、由于iOS需要前往AppStore下载更新，所以iOS平台在UpdateModel中需要传递iOSUrl参数，然后跳转至AppStore下载
 ### 四、效果图
