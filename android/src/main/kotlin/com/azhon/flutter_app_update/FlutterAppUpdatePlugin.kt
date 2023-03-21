@@ -19,9 +19,7 @@ import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONObject
 import java.io.File
 
-/**
- *版本更新插件
- */
+
 class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     EventChannel.StreamHandler {
 
@@ -98,25 +96,11 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
             apkName(model["apkName"] as String)
             apkUrl(model["apkUrl"] as String)
             smallIcon(smallIcon)
-            showNewerToast(model["showNewerToast"] as Boolean)
             showNotification(model["showNotification"] as Boolean)
             jumpInstallPage(model["jumpInstallPage"] as Boolean)
             showBgdToast(model["showBgdToast"] as Boolean)
-            forcedUpgrade(model["forcedUpgrade"] as Boolean)
             onDownloadListener(downloadListener)
             onButtonClickListener(buttonListener)
-            if (notNull(model, "apkVersionCode")) {
-                apkVersionCode(model["apkVersionCode"] as Int)
-            }
-            if (notNull(model, "apkVersionName")) {
-                apkVersionName(model["apkVersionName"] as String)
-            }
-            if (notNull(model, "apkDescription")) {
-                apkDescription(model["apkDescription"] as String)
-            }
-            if (notNull(model, "apkSize")) {
-                apkSize(model["apkSize"] as String)
-            }
             if (notNull(model, "apkMD5")) {
                 apkMD5(model["apkMD5"] as String)
             }
