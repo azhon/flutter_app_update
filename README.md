@@ -1,32 +1,25 @@
-### 一、版本升级功能依赖于[AppUpdate](https://github.com/azhon/AppUpdate)，所以升级相关的文档看这边[文档说明](https://github.com/azhon/AppUpdate/blob/master/README.md) ｜ [English Doc](https://github.com/azhon/AppUpdate/blob/master/README-EN.md)
-
-### 二、使用说明
-- 1、依赖此库[前往此处查看版本号](https://pub.dev/packages/flutter_app_update/install)
+### 一、使用说明
+- Android这一侧的下载依赖[AppUpdate库](https://github.com/azhon/AppUpdate)
+- 添加依赖
 ```yaml
 dependencies:
-  flutter_app_update: ^version
+  flutter_app_update: ^3.0.0
 ```
 
-- 2、创建`UpdateModel`设置下载地址
+- 创建`UpdateModel`设置下载地址
 
 ```dart
-UpdateModel model = UpdateModel(
-  url,
-  "flutterUpdate.apk",
-  "ic_launcher",
-  "1.支持Android4.1及以上版本\n2.支持自定义下载过程\n3.支持通知栏进度条展示\n4.支持文字国际化\n5.使用Kotlin协程重构",
-  showNewerToast: true,
-  apkVersionCode: 2,
-  apkVersionName: "V2.1.8",
-  apkSize: "20.4MB",
-  iOSUrl: 'https://itunes.apple.com/cn/app/抖音/id1142110895',
-);
-AzhonAppUpdate.update(model).then((value) => print(value));
+ UpdateModel model = UpdateModel(
+   url,
+   "flutterUpdate.apk",
+   /// android res/mipmap 目录下的图片名称
+   "ic_launcher",
+   'https://itunes.apple.com/cn/app/抖音/id1142110895',
+ );
+ AzhonAppUpdate.update(model).then((value) => debugPrint('$value'));
 ```
-
-- 3、`ic_launcher`指的是在`Android`项目中在`res/mipmap`文件夹下的图片
-
-- 4、监听下载过程
+> 关于`UpdateModel`各字段的释义详情请看代码注释
+- 监听下载过程
 
 ```dart
 @override
@@ -87,8 +80,8 @@ void initState() {
 	</tr>
 </table>
 
-### 三、由于iOS需要前往AppStore下载更新，所以iOS平台在UpdateModel中需要传递iOSUrl参数，然后跳转至AppStore下载
-### 四、效果图
+
+### 三、效果图
 
 <img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/img1.png" width="300">　<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/img2.png" width="300">
 <img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/img3.png" width="300">　<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/img4.png" width="300">
