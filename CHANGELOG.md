@@ -1,3 +1,7 @@
+## 3.0.0
+update AppUpdate library to 4.2.8
+opt the upgrade logic to ensure the consistency of android and ios
+
 ## 2.1.0
 update AppUpdate library to 4.2.7
 opt flutter mini sdk version
