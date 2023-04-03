@@ -1,6 +1,6 @@
 name: flutter_app_update
 description: A simple lightweight and customizable version update library for Flutter
-version: 3.0.1
+version: 3.0.2
 homepage: https://github.com/azhon/flutter_app_update
 
 environment:
