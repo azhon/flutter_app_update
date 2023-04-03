@@ -3,7 +3,7 @@
 - 添加依赖
 ```yaml
 dependencies:
-  flutter_app_update: ^3.0.0
+  flutter_app_update: ^latest_version
 ```
 
 - 创建`UpdateModel`设置下载地址
@@ -30,12 +30,13 @@ void initState() {
   });
 }
 ```
+
 <table>
 	<tr>
-	    <td>监听类型(type)</td>
-	    <td>扩展字段数据</td>
-	    <td>数据类型</td>
-	    <td>备注</td>
+	    <th>监听类型(type)</th>
+	    <th>扩展字段数据</th>
+	    <th>数据类型</th>
+	    <th>备注</th>
 	</tr >
 	<tr>
 	    <td>onButtonClick</td>
