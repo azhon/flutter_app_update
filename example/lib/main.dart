@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_update/azhon_app_update.dart';
-import 'package:flutter_app_update/update_model.dart';
+import 'package:flutter_app_update/flutter_app_update.dart';
 
 void main() {
   runApp(const App());
