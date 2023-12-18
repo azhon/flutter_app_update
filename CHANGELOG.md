@@ -1,4 +1,7 @@
-## 3.0.2
+## 3.0.4
+update AppUpdate library to 4.3.2
+
+## 3.0.3
 update AppUpdate library to 4.3.1
 
 ## 3.0.2
