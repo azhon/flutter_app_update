@@ -1,27 +1,26 @@
-///数据实体
 class UpdateModel {
-  ///下载地址
+  ///Apk url
   final String apkUrl;
 
-  ///下载好的apk名称
+  ///Download apk name
   final String apkName;
 
-  ///通知栏的小图标,这里传入的是mipmap文件下的图片名称 eg:ic_launcher.png则传入ic_launcher
+  ///Notification small icon, here the name of the image in the mipmap, eg: ic_launcher.png then set ic_launcher
   final String smallIcon;
 
-  ///ios 下载链接
+  ///iOS download url
   final String iOSUrl;
 
-  ///新安装包md5文件校验（32位)，校验重复下载
+  ///New version md5 file verification (32-bit), verification for repeated downloads
   final String? apkMD5;
 
-  ///是否需要显示通知栏进度(默认为true)
+  ///Display progress notification
   final bool showNotification;
 
-  ///下载完成是否自动弹出安装页面 (默认为true)
+  ///Download completed and installation
   final bool jumpInstallPage;
 
-  ///下载开始时是否提示 "正在后台下载新版本…" (默认为true)
+  ///Show "Downloading new version in the background…" toast
   final bool showBgdToast;
 
   UpdateModel(
@@ -35,7 +34,6 @@ class UpdateModel {
     this.showBgdToast = true,
   });
 
-  ///转json
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['apkUrl'] = apkUrl;
