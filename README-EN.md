@@ -64,7 +64,7 @@ void initState() {
 	    <td>done</td>
 	    <td>apk</td>
 	    <td>String</td>
-	    <td>Download done, apk path</td>
+	    <td>Downloaded, apk path</td>
 	</tr>
 	<tr>
 	    <td>cancel</td>
