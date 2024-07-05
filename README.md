@@ -85,5 +85,5 @@ void initState() {
 
 ### 三、Screenshot
 
-<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/en/img1.png" width="300">　<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/en/img2.png" width="300">
-<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/en/img3.png" width="300">　<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/en/img4.png" width="300">
+<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/en/img1.jpg" width="300">　<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/en/img2.jpg" width="300">
+<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/en/img3.jpg" width="300">　<img src="https://raw.githubusercontent.com/azhon/FlutterAppUpdate/main/example/img/en/img4.jpg" width="300">
