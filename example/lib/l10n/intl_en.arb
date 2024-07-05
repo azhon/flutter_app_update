@@ -1,0 +1,13 @@
+{
+  "appTitle": "A simple app update flutter package",
+  "upgrade": "Upgrade",
+  "forceUpgrade": "Force Upgrade",
+  "cancel": "Cancel download",
+  "getCode": "Get VersionCode",
+  "getName": "Get VersionName",
+  "dialogTitle": "New version",
+  "dialogContent": "1.Support Android 4.1 and above\n2.Support for custom download process\n3.Support notification bar progress\n4.Support internationalization\n5.Use Kotlin Coroutines",
+  "dialogConfirm": "Upgrade",
+  "dialogCancel": "Cancel",
+  "end": "end"
+}

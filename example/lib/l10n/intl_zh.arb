@@ -1,0 +1,13 @@
+{
+  "appTitle": "一个简单好用的版本更新库",
+  "upgrade": "更新",
+  "forceUpgrade": "强制更新",
+  "cancel": "取消下载",
+  "getCode": "获取VersionCode",
+  "getName": "获取VersionName",
+  "dialogTitle": "发现新版本",
+  "dialogContent": "1.支持Android4.1及以上版本\n2.支持自定义下载过程\n3.支持通知栏进度条展示\n4.支持文字国际化\n5.使用Kotlin协程重构",
+  "dialogConfirm": "升级",
+  "dialogCancel": "取消",
+  "end": "结束"
+}

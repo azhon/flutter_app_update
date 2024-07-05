@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app_update/flutter_app_update.dart';
+import 'package:flutter_app_update_example/generated/l10n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const App());
 }
 
@@ -11,8 +16,25 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(useMaterial3: false),
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       home: Scaffold(
-        appBar: AppBar(title: const Text('一个简单好用的版本更新库')),
+        appBar: AppBar(
+          title: Builder(
+            builder: (context) {
+              return Text(
+                S.of(context).appTitle,
+                style: const TextStyle(fontSize: 16),
+              );
+            },
+          ),
+        ),
         body: const HomePage(),
       ),
     );
@@ -34,7 +56,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     AzhonAppUpdate.listener((map) {
-      debugPrint(map['type']);
+      debugPrint('app update listener: ${jsonEncode(map)}');
     });
   }
 
@@ -45,26 +67,26 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _item('更新', () {
+          _item(S.of(context).upgrade, () {
             _showUpdateDialog(false);
           }),
-          _item('强制更新', () {
+          _item(S.of(context).forceUpgrade, () {
             _showUpdateDialog(true);
           }),
-          _item('取消下载', () {
+          _item(S.of(context).cancel, () {
             AzhonAppUpdate.cancel.then((value) {
-              debugPrint('取消下载结果 = $value');
+              debugPrint('Cancel download status = $value');
             });
           }),
           const Divider(height: 10),
-          _item('获取VersionCode', () {
+          _item(S.of(context).getCode, () {
             AzhonAppUpdate.getVersionCode.then((value) {
-              debugPrint('获取到的versionCode = $value');
+              debugPrint('versionCode result = $value');
             });
           }),
-          _item('获取VersionName', () {
+          _item(S.of(context).getName, () {
             AzhonAppUpdate.getVersionName.then((value) {
-              debugPrint('获取到的versionName = $value');
+              debugPrint('versionName result = $value');
             });
           }),
         ],
@@ -72,8 +94,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  ///Flutter侧处理升级对话框
-  ///[forcedUpgrade] 是否强制升级
   _showUpdateDialog(bool forcedUpgrade) {
     showDialog(
       context: context,
@@ -82,17 +102,16 @@ class _HomePageState extends State<HomePage> {
         return WillPopScope(
           onWillPop: () => Future.value(!forcedUpgrade),
           child: AlertDialog(
-            title: const Text('发现新版本'),
-            content: const Text(
-                '1.支持Android4.1及以上版本\n2.支持自定义下载过程\n3.支持通知栏进度条展示\n4.支持文字国际化\n5.使用Kotlin协程重构'),
+            title: Text(S.of(context).dialogTitle),
+            content: Text(S.of(context).dialogContent),
             actions: <Widget>[
               if (!forcedUpgrade)
                 TextButton(
-                  child: const Text('取消'),
+                  child: Text(S.of(context).dialogCancel),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               TextButton(
-                child: const Text('升级'),
+                child: Text(S.of(context).dialogConfirm),
                 onPressed: () {
                   _appUpdate();
                   if (!forcedUpgrade) {
@@ -114,7 +133,7 @@ class _HomePageState extends State<HomePage> {
       "ic_launcher",
       'https://itunes.apple.com/cn/app/抖音/id1142110895',
     );
-    AzhonAppUpdate.update(model).then((value) => debugPrint('$value'));
+    AzhonAppUpdate.update(model);
   }
 
   Widget _item(String text, VoidCallback onPressed) {

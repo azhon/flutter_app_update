@@ -1,5 +1,3 @@
-### [English Doc](https://github.com/azhon/flutter_app_update/blob/main/README-EN.md)
-
 ### 一、使用说明
 - Android这一侧的下载依赖[AppUpdate库](https://github.com/azhon/AppUpdate)
 - 添加依赖
