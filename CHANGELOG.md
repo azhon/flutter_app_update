@@ -1,3 +1,7 @@
+## 3.1.0
+support intl
+change default readme to english
+
 ## 3.0.4
 update AppUpdate library to 4.3.2
 
