@@ -1,8 +1,8 @@
 ### [Chinese Doc](https://github.com/azhon/flutter_app_update/blob/main/README-CN.md)
 
-### 一、Instructions
+### 一、Introduce
 - Android update use [AppUpdate](https://github.com/azhon/AppUpdate) library
-- Add to pubspec.yaml
+- Add to pubspec.yaml [pub versions](https://pub.dev/packages/flutter_app_update)
 ```yaml
 dependencies:
   flutter_app_update: ^latest_version
@@ -27,7 +27,7 @@ dependencies:
 void initState() {
   super.initState();
   AzhonAppUpdate.listener((map) {
-    print(map['type']);
+    debugPrint('app update listener: ${jsonEncode(map)}');
   });
 }
 ```

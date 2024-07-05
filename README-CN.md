@@ -1,6 +1,6 @@
 ### 一、使用说明
 - Android这一侧的下载依赖[AppUpdate库](https://github.com/azhon/AppUpdate)
-- 添加依赖
+- 添加依赖 [pub versions](https://pub.dev/packages/flutter_app_update)
 ```yaml
 dependencies:
   flutter_app_update: ^latest_version
@@ -26,7 +26,7 @@ dependencies:
 void initState() {
   super.initState();
   AzhonAppUpdate.listener((map) {
-    print(map['type']);
+    debugPrint('app update listener: ${jsonEncode(map)}');
   });
 }
 ```
