@@ -1,3 +1,7 @@
+## 3.1.1
+update AppUpdate library to 4.3.4
+upgrade AGP to 8.7
+
 ## 3.1.0
 support intl
 change default readme to english
