@@ -1,3 +1,6 @@
+## 3.1.2
+update AppUpdate library to 4.3.6
+
 ## 3.1.1
 update AppUpdate library to 4.3.4
 upgrade AGP to 8.7
