@@ -1,3 +1,6 @@
+## 3.2.0
+opt download listener
+
 ## 3.1.2
 update AppUpdate library to 4.3.6
 
