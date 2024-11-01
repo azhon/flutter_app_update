@@ -20,68 +20,17 @@ dependencies:
  );
  AzhonAppUpdate.update(model).then((value) => debugPrint('$value'));
 ```
-- Listener download
+- Add listener
 
 ```dart
 @override
 void initState() {
   super.initState();
-  AzhonAppUpdate.listener((map) {
-    debugPrint('app update listener: ${jsonEncode(map)}');
+  AzhonAppUpdate.listener((ResultModel model) {
+    debugPrint('$model');
   });
 }
 ```
-
-<table>
-	<tr>
-	    <th>Type</th>
-	    <th>Keys</th>
-	    <th>Type of data</th>
-	    <th>Remark</th>
-	</tr >
-	<tr>
-	    <td>onButtonClick</td>
-	    <td>id</td>
-	    <td>int</td>
-	    <td>Update dialog button click event(0:confirm，1:cancel)</td>
-	</tr>
-	<tr>
-	    <td>start</td>
-	    <td>/</td>
-	    <td>/</td>
-	    <td>Start download</td>
-	</tr>
-	<tr>
-	    <td rowspan="2">downloading</td>
-	    <td>max</td>
-	    <td>int</td>
-	    <td>Downloading, apk file size </td>
-	</tr>
-	<tr>
-	    <td>progress</td>
-	    <td>int</td>
-	    <td>Current progress</td>
-	</tr>
-	<tr>
-	    <td>done</td>
-	    <td>apk</td>
-	    <td>String</td>
-	    <td>Downloaded, apk path</td>
-	</tr>
-	<tr>
-	    <td>cancel</td>
-	    <td>/</td>
-	    <td>/</td>
-	    <td>Cancel download</td>
-	</tr>
-	<tr>
-	    <td>error</td>
-	    <td>exception</td>
-	    <td>String</td>
-	    <td>Download error</td>
-	</tr>
-</table>
-
 
 ### 三、Screenshot
 
