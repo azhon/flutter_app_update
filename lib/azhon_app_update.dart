@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_app_update/result_model.dart';
 import 'package:flutter_app_update/update_model.dart';
 
 class AzhonAppUpdate {
@@ -29,11 +30,10 @@ class AzhonAppUpdate {
   }
 
   ///监听
-  static listener(Function callback) {
+  static listener(ValueChanged<ResultModel> callback) {
     if (!Platform.isAndroid) return;
     _listenerStream = _listenerChannel.receiveBroadcastStream().listen((data) {
-      Map<String, dynamic> map = jsonDecode(data);
-      callback(map);
+      callback.call(ResultModel.fromJson(jsonDecode(data)));
     });
   }
 

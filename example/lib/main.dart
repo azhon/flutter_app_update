@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app_update/flutter_app_update.dart';
+import 'package:flutter_app_update/result_model.dart';
 import 'package:flutter_app_update_example/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -55,8 +54,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    AzhonAppUpdate.listener((map) {
-      debugPrint('app update listener: ${jsonEncode(map)}');
+    AzhonAppUpdate.listener((ResultModel model) {
+      debugPrint('$model');
     });
   }
 
