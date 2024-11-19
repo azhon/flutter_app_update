@@ -1,3 +1,6 @@
+## 3.2.1
+adapter iOS 18 openURL
+
 ## 3.2.0
 opt download listener
 
