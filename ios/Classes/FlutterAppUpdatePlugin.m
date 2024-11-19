@@ -32,25 +32,19 @@
 }
 #pragma 打开AppStore
 -(void)openAppStore:(NSString *)iOSUrl{
-    NSString *url = [iOSUrl stringByAddingPercentEncodingWithAllowedCharacters:[[NSCharacterSet characterSetWithCharactersInString:@""] invertedSet]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    NSString *encodeUrl = [iOSUrl stringByAddingPercentEncodingWithAllowedCharacters:[[NSCharacterSet characterSetWithCharactersInString:@""] invertedSet]];
+    NSURL *url = [NSURL URLWithString:encodeUrl];
+    if(![[UIApplication sharedApplication] canOpenURL:url]){
+        NSLog(@"Cannot open the url：%@",iOSUrl);
+        return;
+    }
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+        if(success){
+            NSLog(@"Open url successfully：%@",iOSUrl);
+        }else{
+            NSLog(@"Open url failed：%@",iOSUrl);
+        }
+    }];
 }
 
-#pragma 获取UIViewController 然后可以跳转
--(UIViewController *)findViewController:(UIWindow *)window {
-    UIWindow *windowToUse = window;
-    if (windowToUse == nil) {
-        for (UIWindow *window in [UIApplication sharedApplication].windows) {
-            if (window.isKeyWindow) {
-                windowToUse = window;
-                break;
-            }
-        }
-    }
-    UIViewController *topController = windowToUse.rootViewController;
-    while (topController.presentedViewController) {
-        topController = topController.presentedViewController;
-    }
-    return topController;
-}
 @end
