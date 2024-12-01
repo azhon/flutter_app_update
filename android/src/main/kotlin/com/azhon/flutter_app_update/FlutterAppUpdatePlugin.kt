@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.text.TextUtils
 import androidx.annotation.NonNull
+import com.azhon.appupdate.config.Constant
 import com.azhon.appupdate.listener.OnButtonClickListener
 import com.azhon.appupdate.listener.OnDownloadListener
 import com.azhon.appupdate.manager.DownloadManager
@@ -54,18 +55,26 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
-            Constants.GET_VERSION_CODE_METHOD -> {
+            "getVersionCode" -> {
                 getVersionCode(result)
             }
-            Constants.GET_VERSION_NAME_METHOD -> {
+
+            "getVersionName" -> {
                 getVersionName(result)
             }
-            Constants.UPDATE_METHOD -> {
+
+            "update" -> {
                 update(call, result)
             }
-            Constants.CANCEL_METHOD -> {
+
+            "cancel" -> {
                 cancel(result)
             }
+
+            "install" -> {
+                install(call, result)
+            }
+
             else -> {
                 result.notImplemented()
             }
@@ -81,6 +90,17 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         val packageInfo =
             applicationContext.packageManager.getPackageInfo(applicationContext.packageName, 0)
         result.success(packageInfo.versionName)
+    }
+
+    private fun install(call: MethodCall, result: Result) {
+        var authorities = call.argument<String?>("authorities")
+        val path = call.argument<String>("path")
+        if (TextUtils.isEmpty(authorities)) {
+            authorities =
+                Constant.AUTHORITIES ?: "${applicationContext.packageName}.fileProvider"
+        }
+        ApkUtil.installApk(applicationContext, authorities!!, File(path!!))
+        result.success(true)
     }
 
     /**

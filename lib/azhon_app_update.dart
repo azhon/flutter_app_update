@@ -29,6 +29,14 @@ class AzhonAppUpdate {
     });
   }
 
+  ///安装应用
+  static Future<bool> install(String apkPath, {String? authorities}) async {
+    return await _channel.invokeMethod('install', {
+      'authorities': authorities,
+      'path': apkPath,
+    });
+  }
+
   ///监听
   static listener(ValueChanged<ResultModel> callback) {
     if (!Platform.isAndroid) return;

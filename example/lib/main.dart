@@ -78,6 +78,12 @@ class _HomePageState extends State<HomePage> {
             });
           }),
           const Divider(height: 10),
+          _item(S.of(context).install, () {
+            AzhonAppUpdate.install('Your apk path').then((value) {
+              debugPrint('install status = $value');
+            });
+          }),
+          const Divider(height: 10),
           _item(S.of(context).getCode, () {
             AzhonAppUpdate.getVersionCode.then((value) {
               debugPrint('versionCode result = $value');

@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forceUpgrade": MessageLookupByLibrary.simpleMessage("Force Upgrade"),
         "getCode": MessageLookupByLibrary.simpleMessage("Get VersionCode"),
         "getName": MessageLookupByLibrary.simpleMessage("Get VersionName"),
-        "upgrade": MessageLookupByLibrary.simpleMessage("Upgrade")
+        "upgrade": MessageLookupByLibrary.simpleMessage("Upgrade"),
+        "install": MessageLookupByLibrary.simpleMessage("Install Apk")
       };
 }

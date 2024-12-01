@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forceUpgrade": MessageLookupByLibrary.simpleMessage("强制更新"),
         "getCode": MessageLookupByLibrary.simpleMessage("获取VersionCode"),
         "getName": MessageLookupByLibrary.simpleMessage("获取VersionName"),
-        "upgrade": MessageLookupByLibrary.simpleMessage("更新")
+        "upgrade": MessageLookupByLibrary.simpleMessage("更新"),
+        "install": MessageLookupByLibrary.simpleMessage("安装 Apk")
       };
 }

@@ -9,5 +9,6 @@
   "dialogContent": "1.Support Android 4.1 and above\n2.Support for custom download process\n3.Support notification bar progress\n4.Support internationalization\n5.Use Kotlin Coroutines",
   "dialogConfirm": "Upgrade",
   "dialogCancel": "Cancel",
+  "install": "Install Apk",
   "end": "end"
 }
