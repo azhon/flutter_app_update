@@ -21,6 +21,8 @@
         [self update:call.arguments];
     }else if([call.method isEqualToString:@"cancel"]){
         result(@(YES));
+    }else if([call.method isEqualToString:@"install"]){
+        result(@(YES));
     }
 }
 #pragma 版本更新
