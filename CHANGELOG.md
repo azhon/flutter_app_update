@@ -1,3 +1,6 @@
+## 3.2.3
+add release download manager and cancel notify
+
 ## 3.2.2
 add install apk method
 
