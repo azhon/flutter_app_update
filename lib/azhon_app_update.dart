@@ -37,20 +37,30 @@ class AzhonAppUpdate {
     });
   }
 
+  ///释放DownloadManager
+  static Future<bool> release() async {
+    return await _channel.invokeMethod('release');
+  }
+
+  ///取消
+  static Future<bool> cancel() async {
+    return await _channel.invokeMethod('cancel');
+  }
+
+  ///删除通知栏消息
+  static Future<bool> cancelNotify() async {
+    return await _channel.invokeMethod('cancelNotify');
+  }
+
   ///监听
-  static listener(ValueChanged<ResultModel> callback) {
+  static void listener(ValueChanged<ResultModel> callback) {
     if (!Platform.isAndroid) return;
     _listenerStream = _listenerChannel.receiveBroadcastStream().listen((data) {
       callback.call(ResultModel.fromJson(jsonDecode(data)));
     });
   }
 
-  ///取消
-  static Future<bool> get cancel async {
-    return await _channel.invokeMethod('cancel');
-  }
-
-  static dispose() {
+  static void dispose() {
     _listenerStream?.cancel();
   }
 }

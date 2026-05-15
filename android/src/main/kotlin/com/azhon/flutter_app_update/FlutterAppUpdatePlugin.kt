@@ -9,6 +9,7 @@ import com.azhon.appupdate.listener.OnButtonClickListener
 import com.azhon.appupdate.listener.OnDownloadListener
 import com.azhon.appupdate.manager.DownloadManager
 import com.azhon.appupdate.util.ApkUtil
+import com.azhon.appupdate.util.NotificationUtil
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -75,6 +76,14 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 install(call, result)
             }
 
+            "release" -> {
+                release(result)
+            }
+
+            "cancelNotify" -> {
+                cancelNotify(result)
+            }
+
             else -> {
                 result.notImplemented()
             }
@@ -132,6 +141,16 @@ class FlutterAppUpdatePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
     private fun cancel(result: Result) {
         manager?.cancel()
+        result.success(true)
+    }
+
+    private fun release(result: Result) {
+        manager?.release()
+        result.success(true)
+    }
+
+    private fun cancelNotify(result: Result) {
+        NotificationUtil.cancelNotification(applicationContext)
         result.success(true)
     }
 
