@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
             _showUpdateDialog(true);
           }),
           _item(S.of(context).cancel, () {
-            AzhonAppUpdate.cancel.then((value) {
+            AzhonAppUpdate.cancel().then((value) {
               debugPrint('cancel download status = $value');
             });
           }),

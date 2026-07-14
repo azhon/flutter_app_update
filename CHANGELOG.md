@@ -1,3 +1,6 @@
+## 3.2.4
+add SPM support for iOS
+
 ## 3.2.3
 add release download manager and cancel notify
 
